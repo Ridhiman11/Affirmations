@@ -1,9 +1,11 @@
 package com.example.affirmations.adapter
 
 import android.content.Context
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.affirmations.R
@@ -17,7 +19,8 @@ class ItemAdapter(private val context: Context,
 
     //A ViewHolder represents a single list item view in RecyclerView;holds reference to individual view
     class ItemViewHolder(private val view: View): RecyclerView.ViewHolder(view){
-        val  textView: TextView = view.findViewById(R.id.item_title)
+        val textView: TextView = view.findViewById(R.id.item_title)
+        val imageView: ImageView = view.findViewById(R.id.item_image)
     }
 
     //accepts parent("recycler view"), view type; returns a new view holder
@@ -33,6 +36,7 @@ class ItemAdapter(private val context: Context,
 
         val item = dataset[position]
         holder.textView.text = context.resources.getString(item.stringResourceId)
+        holder.imageView.setImageResource(item.imageResourceId)
     }
 
     override fun getItemCount() = dataset.size  //return the size of your dataset
